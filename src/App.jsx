@@ -1,29 +1,19 @@
-import "./App.css";
-import Counter from "./components/Counter";
-import ExponentTwo from "./components/ExponentTwo";
-import ExponentThree from "./components/ExponentThree";
-import ExponentFour from "./components/ExponentFour";
-import ExponentFive from "./components/ExponentFive";
-import ExponentSix from "./components/ExponentSix";
+import React, { useState } from 'react';
+import Counter from './Counter';
+import Exponent from './Exponent';
 
+function App() {
+  const [count, setCount] = useState(0);
 
-function App () {
+  const increment = () => setCount(count + 1);
+  const decrement = () => setCount(count - 1);
+
   return (
     <div className="App">
-      <h2><em>Counter</em></h2>
-  
-      <Counter/>
-
-      <br />
-      <h2><em>Exponents</em></h2>
-
-      <div className="container">
-        <ExponentTwo />
-        <ExponentThree />
-        <ExponentFour />
-        <ExponentFive />
-        <ExponentSix />
-      </div>
+      <Counter count={count} increment={increment} decrement={decrement} />
+      <Exponent num={count} exponent={2} />
+      <Exponent num={count} exponent={3} />
+      <Exponent num={count} exponent={4} />
     </div>
   );
 }
